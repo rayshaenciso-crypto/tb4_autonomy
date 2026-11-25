@@ -1,0 +1,23 @@
+# ROS 2 / Colcon
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Archivos temporales
+*.backup
+*.bak
+*.swp
+*~
+
+# Configuración local
+.env
+.vscode/
+
+# Versiones antiguas
+behavior_trees/urgent_route_backup.xml
+/log_status_node.cpp
+/log_status_node.hpp

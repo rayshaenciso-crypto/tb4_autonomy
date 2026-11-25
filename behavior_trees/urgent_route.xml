@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root main_tree_to_execute="MainTree">
+
+  <BehaviorTree ID="MainTree">
+
+    <RecoveryNode name="PriorityNavigation"
+                  number_of_retries="100">
+
+      <ReactiveSequence name="NavigationCycle">
+
+        <!-- Seleccionar objetivo normal o urgente -->
+        <NavigationGoalSelector
+          normal_goal="{goal}"
+          selected_goal="{selected_goal}"
+          urgent_active="{urgent_active}"
+          urgent_generation="{urgent_generation}"
+          completed_generation="{completed_generation}"/>
+
+        <!-- Planificar y seguir trayectoria -->
+        <PipelineSequence name="NavigateSelectedGoal">
+
+          <RateController hz="1.0">
+            <ComputePathToPose
+              goal="{selected_goal}"
+              path="{path}"
+              planner_id="GridBased"/>
+          </RateController>
+
+          <FollowPath
+            path="{path}"
+            controller_id="FollowPath"/>
+
+        </PipelineSequence>
+
+        <!-- Registrar emergencia completada -->
+        <UrgentGoalCompleted
+          urgent_generation="{urgent_generation}"
+          urgent_active="{urgent_active}"
+          completed_generation="{completed_generation}"/>
+
+      </ReactiveSequence>
+
+      <!-- Permitir nuevo ciclo -->
+      <AlwaysSuccess/>
+
+    </RecoveryNode>
+
+  </BehaviorTree>
+
+</root>

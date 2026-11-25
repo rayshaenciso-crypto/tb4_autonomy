@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+
+<package format="3">
+  <name>tb4_autonomy</name>
+  <version>0.1.0</version>
+
+  <description>Priority-based autonomous navigation for TurtleBot4 using ROS 2, Nav2 and custom Behavior Tree plugins.</description>
+
+  <maintainer email="361015294+rayshaenciso-crypto@users.noreply.github.com">Raysha Enciso Ravelo</maintainer>
+  <license>Proprietary</license>
+
+  <!-- Sistema de compilación -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Dependencias ROS 2 -->
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+
+  <!-- Navegación y Behavior Trees -->
+  <depend>nav2_behavior_tree</depend>
+  <depend>behaviortree_cpp_v3</depend>
+
+  <depend>rclcpp_action</depend>
+
+  <depend>nav2_msgs</depend>
+
+  <!-- Mensajes -->
+  <depend>geometry_msgs</depend>
+
+  <!-- Pruebas -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <exec_depend>ament_index_python</exec_depend>
+
+  <exec_depend>launch</exec_depend>
+
+  <exec_depend>launch_ros</exec_depend>
+
+  <exec_depend>turtlebot4_navigation</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
